@@ -1,0 +1,21 @@
+{
+    "name": "zx/ec-tools",
+    "description": "ec-tools",
+    "type": "library",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "ZX\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "zx",
+            "email": "903464207@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "minimum-stability": "dev"
+}
