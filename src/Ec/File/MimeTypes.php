@@ -1,6 +1,6 @@
 <?php
 
-namespace ZX\File;
+namespace ZX\Ec\File;
 
 
 class MimeTypes

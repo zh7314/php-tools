@@ -6,13 +6,13 @@ class IdCard
 {
 
     // 老身份证15位
-    private static $idTypeOld = 15;
+    private $idTypeOld = 15;
     // 新身份证18位
-    private static $idTypeNew = 18;
+    private $idTypeNew = 18;
     // 有效长度
-    private static $effectiveLength = 17;
+    private $effectiveLength = 17;
     //加权因子
-    private static $wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+    private $wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
     //校验码串
     private static $ai = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
     //身份证年

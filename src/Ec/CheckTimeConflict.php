@@ -15,7 +15,7 @@ class CheckTimeConflict
      * @return bool
      * @throws Exception
      */
-    public static function check(string $start_time = null, string $end_time = null, array $array = [], $id = null)
+    public function check(string $start_time = null, string $end_time = null, array $array = [], $id = null)
     {
         if (empty($start_time)) {
             throw new Exception('开始时间不能为空');
@@ -52,7 +52,7 @@ class CheckTimeConflict
             $need[] = $value['end_time'] = strtotime($value['end_time']);
         }
         //先冒泡排序，在校验进入数组和原数组，防止数据错误
-        $bubble_sort_result = self::bubbleSort($need);
+        $bubble_sort_result = $this->bubbleSort($need);
         foreach ($array as $k => $v) {//数据校验,把原数组的start_time，end_time进行查找如果，如果2个键名的key相等或者相差大于1就是数据出错
             if (!in_array($v['start_time'], $bubble_sort_result)) {
                 throw new Exception('数据校验出错，没有检测到开始时间');
@@ -89,7 +89,7 @@ class CheckTimeConflict
     }
 
 
-    public static function bubbleSort(array $arr = [])
+    public function bubbleSort(array $arr = [])
     {
         $len = count($arr);
         //设置一个空数组 用来接收冒出来的泡

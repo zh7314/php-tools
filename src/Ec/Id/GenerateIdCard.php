@@ -16,7 +16,7 @@ class GenerateIdCard
      * @param type $bornDay 出生日期
      * @param type $number 批量生产的数量
      */
-    public static function massProductionIdNumber18($province, $city, $area, $sex, $bornDay, $number)
+    public function massProductionIdNumber18($province, $city, $area, $sex, $bornDay, $number)
     {
 
     }
@@ -30,13 +30,13 @@ class GenerateIdCard
      * @param type $bornDay 出生日期
      * @param type $number 批量生产的数量
      */
-    public static function massProductionIdNumber15($province, $city, $area, $sex, $bornDay, $number)
+    public function massProductionIdNumber15($province, $city, $area, $sex, $bornDay, $number)
     {
 
     }
 
     //区域编码直接生产前6位随机省市区
-    protected static function getRandomAreaCode()
+    protected function getRandomAreaCode()
     {
 
         $data = IdCardData::getAllData();
@@ -75,7 +75,7 @@ class GenerateIdCard
      * 1970 年 1 月 1 日08:00:00开始时间
      * $type true 18位 false 15位
      */
-    protected static function getRandomBornDay(bool $type = true)
+    protected function getRandomBornDay(bool $type = true)
     {
         $start = strtotime('1970-01-01 08:00:00');
         $end = time();
@@ -89,12 +89,12 @@ class GenerateIdCard
     }
 
     //获取随机性别 偶数是女性 基数是男性
-    protected static function getRandomSex()
+    protected function getRandomSex()
     {
         return random_int(1, 9);
     }
 
-    protected static function generateBase18()
+    protected function generateBase18()
     {
         $suffix_a = mt_rand(0, 9);
         $suffix_b = mt_rand(0, 9);
@@ -107,7 +107,7 @@ class GenerateIdCard
         return $base;
     }
 
-    protected static function generateBase15()
+    protected function generateBase15()
     {
         $suffix_a = mt_rand(0, 9);
         $suffix_b = mt_rand(0, 9);
@@ -120,9 +120,8 @@ class GenerateIdCard
         return $base;
     }
 
-    public static function generateID15(int $number = 1)
+    public function generateID15(int $number = 1)
     {
-
         $array = [];
         for ($i = 0; $i < $number; $i++) {
             $base = self::generateBase15();
@@ -133,9 +132,8 @@ class GenerateIdCard
         return $array;
     }
 
-    public static function generateID(int $number = 1)
+    public function generateID(int $number = 1)
     {
-
         $array = [];
         for ($i = 0; $i < $number; $i++) {
             $base = self::generateBase18();
@@ -146,7 +144,7 @@ class GenerateIdCard
         return $array;
     }
 
-    protected static function calcSuffixD($base)
+    protected function calcSuffixD($base)
     {
         if (strlen($base) <> 17) {
             die('Invalid Length');

@@ -1,27 +1,22 @@
 <?php
 
-namespace Zx\File;
+namespace ZX\Ec\File;
 
-use ZX\MimeTypes;
+use ZX\Ec\File\MimeTypes;
 use SplFileObject;
 use Exception;
 
 class SecurityCheck
 {
     //不用string 兼容更多的PHP版本
-    protected static $filePath = '';
+    protected $filePath = '';
 
-    public function __construct()
-    {
-        return null;
-    }
-
-    public static function setFilePath(string $filePath = '')
+    public function setFilePath(string $filePath = '')
     {
         if (empty($filePath)) {
             throw new Exception('待检测文件路径不能为空');
         }
-        self::$filePath = $filePath;
+        $this->$filePath = $filePath;
     }
 
     /**
@@ -29,18 +24,18 @@ class SecurityCheck
      * @return array
      * @throws Exception
      */
-    public static function getFileInfo()
+    public function getFileInfo()
     {
-        if (empty(self::$filePath)) {
+        if (empty($this->filePath)) {
             throw new Exception('待检测文件路径不能为空');
         }
         //判断文件是否存在，
-        if (!file_exists(self::$filePath)) {
+        if (!file_exists($this->filePath)) {
             throw new Exception('待检测文件未找到');
         }
         //获取 mime.type
-        $fileMimeType = mime_content_type(self::$filePath);
-        $file = new  SplFileObject(self::$filePath, 'r');
+        $fileMimeType = mime_content_type($this->filePath);
+        $file = new  SplFileObject($this->filePath, 'r');
 
         return [$fileMimeType, $file];
     }
@@ -49,9 +44,9 @@ class SecurityCheck
      * 检查上传图片是否是图片文件
      * @throws Exception
      */
-    public static function checkImageFile(array $mimeTypes = [])
+    public function checkImageFile(array $mimeTypes = [])
     {
-        [$fileMimeType, $file] = self::getFileInfo();
+        list($fileMimeType, $file) = $this->getFileInfo();
         if (empty($mimeTypes)) {
             $mimeTypes = MimeTypes::getImage();
         }
@@ -84,9 +79,9 @@ class SecurityCheck
      * @return bool
      * @throws Exception
      */
-    public static function checkMimeTypeVsExtension(array $mimeTypes = [])
+    public function checkMimeTypeVsExtension(array $mimeTypes = [])
     {
-        [$fileMimeType, $file] = self::getFileInfo();
+        list($fileMimeType, $file) = $this->getFileInfo();
 
         $extension = $file->getExtension();
         if (empty($mimeTypes)) {
@@ -115,9 +110,9 @@ class SecurityCheck
      * 严格模式暂未实现,等有时间在添加
      * @throws Exception
      */
-    public static function checkPHPFile(array $mimeTypes = [])
+    public function checkPHPFile(array $mimeTypes = [])
     {
-        [$fileMimeType, $file] = self::getFileInfo();
+        list($fileMimeType, $file) = $this->getFileInfo();
 
         $extension = $file->getExtension();
         if (empty($mimeTypes)) {
@@ -138,7 +133,7 @@ class SecurityCheck
             //读取一行，是否是二进制
             $data .= bin2hex($file->fgets());
         }
-        return self::checkHex($data);
+        return $this->checkHex($data);
     }
 
     /**
@@ -152,7 +147,7 @@ class SecurityCheck
      * @param string $hexCode
      * @return bool
      */
-    public static function checkHex(string $hexCode)
+    public function checkHex(string $hexCode)
     {
         $tt = preg_match("/3C3F706870|3F3E|3C3F|3C736372697074|2F7363726970743E|3C25|253E|3C3F504850|3C534352495054|2F5343524950543E/is", $hexCode);
         if ($tt) {
@@ -169,7 +164,7 @@ class SecurityCheck
      * @param string $hex
      * @return string
      */
-    public static function hexToStr(string $hex)
+    public function hexToStr(string $hex)
     {
         $string = "";
         for ($i = 0; $i < strlen($hex) - 1; $i += 2)
@@ -183,7 +178,7 @@ class SecurityCheck
      * @param string $string
      * @return string
      */
-    public static function strToHex(string $string)
+    public function strToHex(string $string)
     {
         $hex = "";
         for ($i = 0; $i < strlen($string); $i++)
