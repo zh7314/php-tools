@@ -5,8 +5,7 @@ namespace ZX\Ec;
 class IP
 {
 
-
-    public function checkIp($ip)
+    public static function checkIp(string $ip)
     {
         $arr = explode('.', $ip);
         if (count($arr) != 4) {

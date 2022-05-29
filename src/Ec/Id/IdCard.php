@@ -14,7 +14,7 @@ class IdCard
     //加权因子
     private $wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
     //校验码串
-    private static $ai = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+    private $ai = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
     //身份证年
     private $year;
     //身份证月
@@ -120,7 +120,7 @@ class IdCard
         //计算序号
         $number = $sigma % 11;
         //按照序号从校验码串中提取相应的字符。
-        $check_number = self::$ai[$number];
+        $check_number = $this->ai[$number];
         return $check_number;
     }
 
