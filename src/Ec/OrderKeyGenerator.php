@@ -17,7 +17,7 @@ class OrderKeyGenerator
 
     /*
      * 不是绝对唯一，大量并发可能会出现重复
-     *时间有序订单号 固定长度
+     * 时间有序订单号 固定长度
      */
     public static function getRandKey(string $prefix = '', int $length = 0, bool $is_repeat = false)
     {

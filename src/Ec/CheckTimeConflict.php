@@ -53,7 +53,9 @@ class CheckTimeConflict
         }
         //先冒泡排序，在校验进入数组和原数组，防止数据错误
         $bubble_sort_result = self::bubbleSort($need);
-        foreach ($array as $k => $v) {//数据校验,把原数组的start_time，end_time进行查找如果，如果2个键名的key相等或者相差大于1就是数据出错
+        foreach ($array as $k => $v) {
+            //数据校验,把原数组的start_time，end_time进行查找如果，如果2个键名的key相等或者相差大于1就是数据出错
+
             if (!in_array($v['start_time'], $bubble_sort_result)) {
                 throw new Exception('数据校验出错，没有检测到开始时间');
             }
@@ -94,7 +96,8 @@ class CheckTimeConflict
         $len = count($arr);
         //设置一个空数组 用来接收冒出来的泡
         //该层循环控制 需要冒泡的轮数
-        for ($i = 1; $i < $len; $i++) { //该层循环用来控制每轮 冒出一个数 需要比较的次数
+        for ($i = 1; $i < $len; $i++) {
+            //该层循环用来控制每轮 冒出一个数 需要比较的次数
             for ($k = 0; $k < $len - $i; $k++) {
                 if ($arr[$k] > $arr[$k + 1]) {
                     $tmp = $arr[$k + 1];
