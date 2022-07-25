@@ -18,5 +18,7 @@ use ZX\Ec\PageTool;
 //p(OrderKeyGenerator::getShotKey());
 //p(OrderKeyGenerator::getShotKey('UD_', 4));
 
-$array = [1, 2, 3, 45, 6];
-PageTool::page($array);
+$array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+//list($list, $count) = PageTool::pageByArray($array, 3, 3);
+$data = PageTool::pageByArray($array, 3, 3);
+p($data);
