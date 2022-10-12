@@ -16,7 +16,7 @@ class SecurityCheck
         if (empty($filePath)) {
             throw new Exception('待检测文件路径不能为空');
         }
-        $this->$filePath = $filePath;
+        $this->filePath = $filePath;
     }
 
     /**
@@ -138,12 +138,12 @@ class SecurityCheck
 
     /**
      * 大小写亦可
-     * 匹配16进制中的 <% %>
-     * 匹配16进制中的 <? ?>
-     * 匹配16进制中的 <script /script>
-     * 匹配16进制中的 <?php ?>
-     * 匹配16进制中的 <?PHP ?>
-     * 匹配16进制中的 <SCRIPT /SCRIPT>
+     * 匹配16进制中的 <%
+     * 匹配16进制中的 <?
+     * 匹配16进制中的 <script
+     * 匹配16进制中的 <?php
+     * 匹配16进制中的 <?PHP
+     * 匹配16进制中的 <SCRIPT
      * @param string $hexCode
      * @return bool
      */
