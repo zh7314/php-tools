@@ -2,7 +2,7 @@
 
 #### 安装
 ```
-composer require zx/php-tools dev
+composer require zx/php-tools
 ```
 
 #### 介绍
