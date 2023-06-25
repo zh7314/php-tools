@@ -1,8 +1,8 @@
 <?php
 
-namespace ZX\Ec\File;
+namespace ZX\Tools\File;
 
-use ZX\Ec\File\MimeTypes;
+use ZX\Tools\File\MimeTypes;
 use SplFileObject;
 use Exception;
 

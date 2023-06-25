@@ -3,9 +3,9 @@
 include_once './../vendor/autoload.php';
 
 use ZX\Algorithm\LargeDigitalConversion62;
-use ZX\Ec\OrderKeyGenerator;
-use ZX\Ec\PageTool;
-use ZX\Ec\CheckTimeConflict;
+use ZX\Tools\OrderKeyGenerator;
+use ZX\Tools\PageTool;
+use ZX\Tools\CheckTimeConflict;
 
 if (!function_exists('p')) {
     function p($data = null)

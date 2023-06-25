@@ -1,6 +1,6 @@
 {
-    "name": "zx/ec-tools",
-    "description": "ec-tools",
+    "name": "zx/php-tools",
+    "description": "php-tools",
     "type": "library",
     "license": "mit",
     "autoload": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ZX\Ec\Id;
+namespace ZX\Tools\Id;
 
 class IdCardData
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace ZX\Ec\Id;
+namespace ZX\Tools\Id;
 
-use ZX\Ec\Id\IdCardData;
+use ZX\Tools\Id\IdCardData;
 
 class GenerateIdCard {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ZX\Ec;
+namespace ZX\Tools;
 
 use Exception;
 
